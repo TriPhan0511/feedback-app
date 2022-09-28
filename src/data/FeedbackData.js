@@ -6,12 +6,12 @@ const FeedbackData = [
   },
   {
     id: 2,
-    rating: 7,
+    rating: 9,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos temporibus voluptate dolor, facere illum',
   },
   {
     id: 3,
-    rating: 9,
+    rating: 8,
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos temporibus voluptate dolor, facere illum',
   },
   // {
