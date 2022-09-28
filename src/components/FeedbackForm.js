@@ -1,15 +1,17 @@
+import { v4 as uuidv4 } from 'uuid'
 import React, { useState } from 'react'
+import RatingSelect from './RatingSelect'
 import Button from './shared/Button'
 import Card from './shared/Card'
 
-function FeedbackForm() {
+function FeedbackForm({ handleAdd }) {
   const [text, setText] = useState('')
+  const [rating, setRating] = useState(10)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
 
   const handleTextChange = (e) => {
     const inputValue = e.target.value
-    setText(inputValue)
     if (inputValue === '') {
       setBtnDisabled(true)
       setMessage(null)
@@ -20,13 +22,23 @@ function FeedbackForm() {
       setBtnDisabled(false)
       setMessage(null)
     }
+    setText(inputValue)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (text.trim().length >= 10) {
+      const newFeedback = { id: uuidv4(), rating, text }
+      handleAdd(newFeedback)
+      setText('')
+    }
   }
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
-        {/* todo - rating select component */}
+        <RatingSelect select={(rating) => setRating(rating)} />
         <div className='input-group'>
           <input
             type='text'
