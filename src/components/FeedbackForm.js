@@ -31,6 +31,7 @@ function FeedbackForm({ handleAdd }) {
       const newFeedback = { id: uuidv4(), rating, text }
       handleAdd(newFeedback)
       setText('')
+      setBtnDisabled(true)
     }
   }
 
